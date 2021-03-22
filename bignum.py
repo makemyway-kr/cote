@@ -1,7 +1,5 @@
 def comparing(a, b):
-    a=str(a)
-    b=str(b)
-    if a+b>=b+a:
+    if ((a*(10**len(str(b))))+b)>=((b*(10**len(str(a))))+a):
         return True
     else:
         return False
@@ -9,14 +7,15 @@ def solution(numbers):
     
     answer = ''
    
-    for i in range(len(numbers)-1):
-        j=i+1
-        for j in range(len(numbers)):
-            if comparing(i,numbers[j])==False:
+    for i in range(len(numbers),0,-1):
+
+        for j in range(0,i):
+            if comparing(numbers[j],numbers[j+1])==False:
                 temp=0
-                temp=numbers[j]
-                numbers[j]=numbers[i]
-                numbers[i]=temp
+                temp=numbers[j+1]
+                numbers[j+1]=numbers[j]
+                numbers[j]=temp
+
     if(numbers[0]=='0'):
         return 0
 
@@ -25,9 +24,3 @@ def solution(numbers):
     for i in numbers:
         answer=answer+i
     return answer
-   
-        
-  
-   
-        
-    
