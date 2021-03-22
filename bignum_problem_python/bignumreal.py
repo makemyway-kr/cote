@@ -7,7 +7,7 @@ def solution(numbers):
     663순으로 정렬한다.'''
     answers=""
     if numbers[0]=="0":
-        return 0
+        return "0"
     for i in numbers:
         answers=answers+i;
     return answers
