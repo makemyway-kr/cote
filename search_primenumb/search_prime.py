@@ -22,7 +22,10 @@ def solution(numbers):
             even.append(numbers[i])
         else:
             odd.append(numbers[i])
-        for i in range (1,len(numbers)+1):
+    for i in range (odd):'''한자릿수 소수 추가'''
+        if check_if_prime(i)==True:
+            answer+=1
+    
             
     
     return answer
