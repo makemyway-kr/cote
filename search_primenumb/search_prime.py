@@ -1,4 +1,4 @@
-import math;
+import math
 from itertools import permutations
 def check_if_prime(num):
     ret=True
@@ -12,20 +12,13 @@ def check_if_prime(num):
             break
     return ret
 def solution(numbers):
+    alist=[]
     length=len(numbers)
-    even={}
-    odd={}
-
-    for i in range (length): '''dividing odd numbers and even numbers b/c 
-    even numbers cannot be the last digit of prime number'''
-        if int(numbers[i])%2==0:
-            even.append(numbers[i])
-        else:
-            odd.append(numbers[i])
-    for i in range (odd):'''한자릿수 소수 추가'''
-        if check_if_prime(i)==True:
-            answer+=1
-    
-            
-    
-    return answer
+    for i in range(1,len(numbers)+1):
+        array=list(permutations(numbers,i))
+        for n in array:
+            n=int(''.join(map(str,n)))
+            if check_if_prime(n)==True:
+                alist.append(n)
+    answerlist=list(set(alist))
+    return len(answerlist)
