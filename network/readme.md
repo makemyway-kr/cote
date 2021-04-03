@@ -17,27 +17,27 @@
 <br>
 이 문제를 해결하기 전 썼던 코드를 첨부해본다.(배운 내용이 있음)
 
- import copy
-queueofconnected=[]
-num_of_com=0
-comlans=[]
-def dfs(num,lan):
-        queueofconnected.append(num)
-        for k in range (num_of_com):
-            if lan[k]==1 and k!=num:
-                if k not in queueofconnected:
-                    dfs(k,comlans[k])
-
-            
-def solution(n, computers):
-    answer = 0
-    num_of_com=n
-    comlans=copy.deepcopy(computers)
-    for i in range (n):
-        if i not in queueofconnected:
-            dfs(i,comlans[i])
-            answer+=1
-    return answer
+ import copy<br>
+queueofconnected=[]<br>
+num_of_com=0<br>
+comlans=[]<br>
+def dfs(num,lan):<br>
+        queueofconnected.append(num)<br>
+        for k in range (num_of_com):<br>
+            if lan[k]==1 and k!=num:<br>
+                if k not in queueofconnected:<br>
+                    dfs(k,comlans[k])<br>
+<br>
+            <br>
+def solution(n, computers):<br>
+    answer = 0<br>
+    num_of_com=n<br>
+    comlans=copy.deepcopy(computers)<br>
+    for i in range (n):<br>
+        if i not in queueofconnected:<br>
+            dfs(i,comlans[i])<br>
+            answer+=1<br>
+    return answer<br>
 <br>
 여기서는 copy를 이용해서 전역변수에 컴퓨터의 연결여부 2차원배열과 컴퓨터의 갯수를 저장하여 사용하려 하였으나,<br>
 파이썬에서는 전역변수를 함수 안에서 수정하려면 global을 써주어야한다는 것을 몰라, 계속해서 오류가 났다.
