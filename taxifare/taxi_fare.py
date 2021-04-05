@@ -37,7 +37,7 @@ def dijk(start,fin,n):
         curr=minnode(visit,flist)
         visit[curr]=True
         for i in range(1,n+1):
-            if flist[curr]+graph[curr][i]<flist[i] and i!=start:
+            if flist[curr]+graph[curr][i]<flist[i]:
                 flist[i]=flist[curr]+graph[curr][i]
     return flist[fin]
     
