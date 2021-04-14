@@ -1,5 +1,6 @@
 graph=[[]]
-def pre(n,fares):
+'''21.04.14 test case 1번 만 맞는걸로 뜸'''
+def pre(n,fares):'''사전 graph 작업'''
     global graph
     graph=[[100001 for col in range(n+1)]for i in range(n+1)]
     for i in range(n+1):
@@ -12,7 +13,7 @@ def pre(n,fares):
         graph[i[0]][i[1]]=i[2]
         graph[i[1]][i[0]]=i[2]
 
-def minnode(v,f):
+def minnode(v,f):'''가장 비용이 적은 노드 찾는 함수'''
     ans=0
     min=100001
     for i in range(1,len(v)):
@@ -22,7 +23,7 @@ def minnode(v,f):
     return ans
 
 
-def dijk(start,fin,n):
+def dijk(start,fin,n):'''다익스트라알고리즘'''
     global graph
     flist=[0 for i in range(n+1)]
     visit=[False for i in range(n+1)]
@@ -33,7 +34,7 @@ def dijk(start,fin,n):
         elif graph[start][i]!=100001:
             flist[i]=(graph[start][i])
         else:
-            flist.append(100001)
+            flist[i]=100001
     while visit[fin]!=True:
         curr=minnode(visit,flist)
         visit[curr]=True
