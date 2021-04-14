@@ -23,6 +23,7 @@ def minnode(v,f):
 
 
 def dijk(start,fin,n):
+    global graph
     flist=[0 for i in range(n+1)]
     visit=[False for i in range(n+1)]
     for i in range(1,(n+1)):
@@ -37,7 +38,7 @@ def dijk(start,fin,n):
         curr=minnode(visit,flist)
         visit[curr]=True
         for i in range(1,n+1):
-            if flist[curr]+graph[curr][i]<flist[i]:
+            if flist[curr]+graph[curr][i]<flist[i] and visit[i]==False:
                 flist[i]=flist[curr]+graph[curr][i]
     return flist[fin]
     
