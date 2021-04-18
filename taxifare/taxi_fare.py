@@ -21,28 +21,43 @@ def minnode(v,f):#따로 떨어져있는 트리에서 오류가 발생하는듯.
         if f[i]<min and v[i]==False:
             min=f[i]
             ans=i
-    return ans
+    if ans==0:#연결할수 있는 최단거리 노드가 존재하지 않는 경우
+        return -1
+    else:
+        return ans
 
 
 def dijk(start,fin,n):#다익스트라알고리즘
-    global graph
-    flist=[0 for i in range(n+1)]
-    visit=[False for i in range(n+1)]
-    for i in range(1,(n+1)):
-        if i==start:
-            flist[i]=(100001)
-            visit[i]=(True)
-        elif graph[start][i]!=100001:
-            flist[i]=(graph[start][i])
-        else:
-            flist[i]=100001
-    while visit[fin]!=True:
-        curr=minnode(visit,flist)
-        visit[curr]=True
-        for i in range(1,n+1):
-            if flist[curr]+graph[curr][i]<flist[i] and visit[i]==False:
-                flist[i]=flist[curr]+graph[curr][i]
-    return flist[fin]
+    if start==fin:
+        return 0
+    else:
+        global graph
+        flist=[0 for i in range(n+1)]
+        visit=[False for i in range(n+1)]
+        for i in range(1,(n+1)):
+            if i==start:
+                flist[i]=(100001)
+                visit[i]=(True)
+            elif graph[start][i]!=100001:
+                flist[i]=(graph[start][i])
+            else:
+                flist[i]=100001
+        rc=True
+        while visit[fin]!=True:
+            curr=minnode(visit,flist)
+            if curr==-1:
+                rc=False
+                break
+            else:
+                visit[curr]=True
+                for i in range(1,n+1):
+                    if flist[curr]+graph[curr][i]<flist[i] and visit[i]==False:
+                        flist[i]=flist[curr]+graph[curr][i]
+        if rc==False:
+            return 100001
+        elif rc==True:
+            return flist[fin]
+        
     
 
 
