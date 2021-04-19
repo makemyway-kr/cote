@@ -2,7 +2,7 @@ graph=[[]]
  #사전 graph 작업
 def pre(n,fares):      
     global graph
-    graph=[[100001 for col in range(n+1)]for i in range(n+1)]
+    graph=[[100000001 for col in range(n+1)]for i in range(n+1)]
     for i in range(n+1):
         for k in range(n+1):
             if i==k:
@@ -15,7 +15,7 @@ def pre(n,fares):
 #가장 비용이 적은 노드 찾는 함수
 def minnode(v,f):
     ans=0
-    min=100001
+    min=100000001
     for i in range(1,len(v)):
         if f[i]<min and v[i]==False:
             min=f[i]
@@ -35,12 +35,12 @@ def dijk(start,fin,n):#다익스트라알고리즘
         visit=[False for i in range(n+1)]
         for i in range(1,(n+1)):
             if i==start:
-                flist[i]=(100001)
+                flist[i]=(100000001)
                 visit[i]=(True)
-            elif graph[start][i]!=100001:
+            elif graph[start][i]!=100000001:
                 flist[i]=(graph[start][i])
             else:
-                flist[i]=100001
+                flist[i]=100000001
         rc=True
         while visit[fin]!=True:
             curr=minnode(visit,flist)
@@ -53,11 +53,11 @@ def dijk(start,fin,n):#다익스트라알고리즘
                     if flist[curr]+graph[curr][i]<flist[i] and visit[i]==False:
                         flist[i]=flist[curr]+graph[curr][i]
         if rc==False:
-            return 100001
+            return 100000001
         elif rc==True:
             return flist[fin]
 def solution(n, s, a, b, fares):
-    answer = 100001
+    answer = 100000001
     if len(fares)==3:
         answer=fares[0][2]+fares[1][2]+fares[2][1]
     else:
