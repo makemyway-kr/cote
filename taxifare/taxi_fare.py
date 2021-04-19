@@ -13,7 +13,7 @@ def pre(n,fares):
         graph[i[0]][i[1]]=i[2]
         graph[i[1]][i[0]]=i[2]
 #가장 비용이 적은 노드 찾는 함수
-def minnode(v,f):
+def minnode(v,f):#방문하지 않은 노드중 최단거리 노드를 구함
     ans=0
     min=100000001
     for i in range(1,len(v)):
