@@ -56,14 +56,12 @@ def dijk(start,fin,n):#다익스트라알고리즘
             return 100001
         elif rc==True:
             return flist[fin]
-        
-    
-
-
 def solution(n, s, a, b, fares):
-    answer = 10001
-    pre(n,fares)
-    for i in range(1,n+1):
-        answer=min(answer,dijk(s,i,n)+dijk(i,a,n)+dijk(i,b,n))
+    answer = 100001
+    if len(fares)==3:
+        answer=fares[0][2]+fares[1][2]+fares[2][1]
+    else:
+        pre(n,fares)
+        for i in range(1,n+1):
+            answer=min(answer,dijk(s,i,n)+dijk(i,a,n)+dijk(i,b,n))
     return answer
-print(solution(7,3,4,1,[[5, 7, 9], [4, 6, 4], [3, 6, 1], [3, 2, 3], [2, 1, 6]]))
