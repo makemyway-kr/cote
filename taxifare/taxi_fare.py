@@ -1,5 +1,4 @@
 graph=[[]]
-#21.04.14 test case 1번 만 맞는걸로 뜸
  #사전 graph 작업
 def pre(n,fares):      
     global graph
@@ -14,7 +13,7 @@ def pre(n,fares):
         graph[i[0]][i[1]]=i[2]
         graph[i[1]][i[0]]=i[2]
 #가장 비용이 적은 노드 찾는 함수
-def minnode(v,f):#따로 떨어져있는 트리에서 오류가 발생하는듯.
+def minnode(v,f):
     ans=0
     min=100001
     for i in range(1,len(v)):
