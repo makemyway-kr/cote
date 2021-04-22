@@ -5,9 +5,7 @@ def nextairport(tickets,depart):#dfs
     for i in range(len(tickets)):
         if tickets[i][0]==depart:
             heapq.heappush(nominee,(tickets[i][1],i))
-    for i in nominee:
-        if (nextairport(tickets,i[0])):
-            return i[0]
+    
 def solution(tickets):
     answer = []
     dep=nextairport(tickets,"ICN")
