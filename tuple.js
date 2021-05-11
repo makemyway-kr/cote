@@ -1,20 +1,38 @@
 function solution(s) {
     var answer = [];
-    for(var i=0;i<s.length;i++)
-    {
-        var temp;
-        if(s[i]!='{' && s[i]!='}' && s[i]!=','){
-           temp+=s[i];
+    var temper = [];
+    var temp = "";
+    for (var i = 0; i < s.length; i++) {
+        if (s[i] != "{" && s[i] != "}") {
+            temp += s[i];
+        } else if (s[i] == "{") {
+            i += 1;
+        } else if (s[i] == "}" && i != s.length - 1) {
+            temper.push(temp);
         }
-        if(s[i]==','){
-            var count=0;
-            for(var j=0;j<answer.length;j++){
-                if(answer[j]==Number(temp)){
-                    count+=1;
-                }
+    } //{}단위로 넣음.
+    var temper2 = [];
+    for (var i = 0; i < temper.length; i++) {
+        temp = "";
+        var tempin = [];
+        for (var k = 0; k < temper[i].length; k++) {
+            if (temper[i][k] != ',') {
+                temp += temper[i][k];
+            } else if (temper[i][k] == ',') {
+                tempin.push(Number(temp));
+                temp = "";
             }
-            if(count==0){
-                answer.push(Number(temp));
+        }
+        temper2.push(tempin);
+    }
+    for (var i = 0; i < temper2.length; i++) {
+        for (var k = 0; k < temper2.length; k++) {
+            if (temper2[k].length == i + 1) {
+                for (var l = 0; l < temper2[k].length; l++) {
+                    if (answer.indexOf(temper2[k][l]) == -1) {
+                        answer.push(temper2[k][l]);
+                    }
+                }
             }
         }
     }
