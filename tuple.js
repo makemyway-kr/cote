@@ -5,12 +5,14 @@ function solution(s) {
     for (var i = 0; i < s.length; i++) {
         if (s[i] != "{" && s[i] != "}") {
             temp += s[i];
-        } else if (s[i] == "{") {
-            i += 1;
-        } else if (s[i] == "}" && i != s.length - 1) {
+        } 
+        else if (s[i] == "}" && i != s.length - 1) {
             temper.push(temp);
+            i=i+1;
+            temp="";
         }
     } //{}단위로 넣음.
+
     var temper2 = [];
     for (var i = 0; i < temper.length; i++) {
         temp = "";
@@ -23,6 +25,7 @@ function solution(s) {
                 temp = "";
             }
         }
+        tempin.push(Number(temp));
         temper2.push(tempin);
     }
     for (var i = 0; i < temper2.length; i++) {
