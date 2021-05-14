@@ -1,16 +1,13 @@
 //프로그래머스 입국심사
 function solution(n, times) {
-    var ltime = 0;
-    ltime = 1; //왼쪽끝
+    var ltime = 1;
     var sumt = [];
     var rtime = Math.max(...times) * n; //오른쪽
     var time = rtime; //계산 대상 시간
-    while (ltime <= rtime) {
-        if (n == times.length) {
-            sumt.push(Math.max(...times));
-            ltime = rtime + 1;
-            break;
-        } else {
+    if (n == times.length) {
+        return Math.max(...times);
+    } else {
+        while (ltime <= rtime) {
             var temp = new Array(times.length);
             for (var i = 0; i < times.length; i++) {
                 temp[i] = Math.floor(time / times[i]);
@@ -30,7 +27,8 @@ function solution(n, times) {
             }
 
         }
+        return Math.min(...sumt);
 
     }
-    return Math.min(...sumt);
+
 }
