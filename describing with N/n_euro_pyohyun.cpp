@@ -18,27 +18,27 @@ int solution(int N, int number) {
     if(answer==-1)
     {
         for(int i=2;i<9;i++)
-    {
-        for(int j=1;j<i;j++)
         {
-            int k=i-j;
-            for(int m:numbers[j])
+            for(int j=1;j<i;j++)
             {
-                for(int n:numbers[k])
+                int k=i-j;
+                for(int m:numbers[j])
                 {
-                    numbers[i].insert(m+n);
-                    if(m-n>=0)numbers[i].insert(m-n);
-                    numbers[i].insert(m*n);
-                    if(m!=0 && n!=0 && m/n>=1)numbers[i].insert(m/n);
+                    for(int n:numbers[k])
+                    {
+                        numbers[i].insert(m+n);
+                        if(m-n>=0)numbers[i].insert(m-n);
+                        numbers[i].insert(m*n);
+                        if(m!=0 && n!=0 && m/n>=1)numbers[i].insert(m/n);
+                    }
                 }
             }
+            if(numbers[i].find(number)!=numbers[i].end())
+            {
+                answer=i;
+                break;
+            }
         }
-        if(numbers[i].find(number)!=numbers[i].end())
-        {
-            answer=i;
-            break;
-        }
-    }
     
     }
     
