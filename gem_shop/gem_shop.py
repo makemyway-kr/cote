@@ -10,5 +10,5 @@ def solution(gems):
                 break 
         if len(answer)!=0:
             break              
-    return answer
+    return answer`
 print(solution(["DIA", "EM", "EM", "RUB", "DIA"]))
