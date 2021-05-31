@@ -1,14 +1,19 @@
 def solution(gems):
     answer = []
+    start=0
     gemsl=set(gems)#보석종류 저장
-    for ran in range(len(gemsl),len(gems)+1):#최소한 보석의 종류만큼은 사야함, 최대 진열장 모두
-        for s in range(len(gems)-ran+1):#시작 위치
-            temp=set(gems[s:s+ran])
-            if len(temp)==len(gemsl):
-                answer.append(s+1)
-                answer.append(s+ran)
-                break 
-        if len(answer)!=0:
-            break              
-    return answer`
-print(solution(["DIA", "EM", "EM", "RUB", "DIA"]))
+    end=start+len(gemsl)-1
+    length=100001
+    while start<len(gems) and end<len(gems):
+        if set(gems[start:end+1])==gemsl and end-start<length:
+            length=end-start
+            answer.clear()
+            answer.append(start+1)
+            answer.append(end+1)
+        if end==len(gems)-1 and start!=len(gems)-1:
+            start+=1
+            end=start+len(gemsl)-1
+        else:
+            end+=1
+    return answer
+print(solution(["XYZ", "XYZ", "XYZ"]))
