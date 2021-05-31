@@ -4,8 +4,10 @@ def solution(gems):
     gemsl=set(gems)#보석종류 저장
     end=start+len(gemsl)-1
     length=100001
-    while start<len(gems) and end<len(gems):
-        if set(gems[start:end+1])==gemsl and end-start<length:
+    glen=len(gems)
+    gtype=len(gemsl)
+    while start<=glen-gtype and end<glen:
+        if len(set(gems[start:end+1]))==gtype and end-start<length:
             length=end-start
             answer.clear()
             answer.append(start+1)
@@ -16,4 +18,4 @@ def solution(gems):
         else:
             end+=1
     return answer
-print(solution(["XYZ", "XYZ", "XYZ"]))
+print(solution(["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]))
