@@ -4,7 +4,7 @@ def solution(gems):
     pool=[]
     direct_key=0
     for start in range(0,len(gems)-len(gemlist)):
-        for length in range(len(gemlist),len(gems)+1):
+        for length in range(len(gemlist),len(gemlist)+len(gems)-start):
             if len(set(gems[start:start+length]))==len(gemlist):
                 pool.append([start+1,start+length,length])
                 if length==len(gemlist):
