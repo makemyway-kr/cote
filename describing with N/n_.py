@@ -1,36 +1,34 @@
-import math
 def solution(N, number):
-    answer = 0
+    answer = -1
+    numbers=[]
     if N==number:
         answer=1
     else:
-        numbers_to_use=[]
-        numbers_to_use.append([N])
+        temp=N
+        numbers.append([N])
         for i in range(1,8):
-            temp_array=[]
-            temp=N
-            for k in range(i):
-                temp=(temp*10)+N #기본 숫자 넣어둠
-            temp_array.append(temp)
-            numbers_to_use.append(temp_array)
-        if N in numbers_to_use:
-            answer=len(str(N));
+            temp=(temp*10)+N
+            numbers.append([temp])
+        for list in numbers:
+            if number in list:
+                answer=numbers.index(list)+1
         else:
-            for i in range(2,8):
-                for k in range(1,i):
-                    index1=i-k-1
-                    index2=k-1
-                    for nu1 in numbers_to_use[index1]:
-                        for nu2 in numbers_to_use[index2]:
-                            numbers_to_use[i-1].append(nu1+nu2)
-                            numbers_to_use[i-1].append(nu1*nu2)
-                            if nu1-nu2>=0:
-                                numbers_to_use[i-1].append(nu1-nu2)
-                            if nu1!=0 and nu2!=0 and nu1/nu2>=0:
-                                numbers_to_use[i-1].append(math.floor(nu1/nu2))
-                    if N in numbers_to_use[i-1]:
-                        answer=i
-                        print(numbers_to_use[i-1])
-                        break
+            for usedN in range(2,9):
+                for i in range(1,usedN):
+                    l=usedN-i
+                    for left in numbers[i-1]:
+                        for right in numbers[l-1]:
+                            if left+right not in numbers[usedN-1]:
+                                numbers[usedN-1].append(left+right)
+                            if left*right not in numbers[usedN-1]:
+                                numbers[usedN-1].append(left*right)
+                            if right>0 and left//right>1 and left//right not in numbers[usedN-1]:
+                                numbers[usedN-1].append(left//right)
+                            if left-right>0 and left-right not in numbers[usedN-1]:
+                                numbers[usedN-1].append(left-right)
+            for list in numbers:
+                if number in list:
+                    answer=numbers.index(list)+1
+                    break
     return answer
 print(solution(5,12))
