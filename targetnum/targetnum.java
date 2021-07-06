@@ -39,6 +39,7 @@ class Solution {
     public int solution(int[] numbers, int target) {
         t=target;
         DFS(numbers,numbers[0],1);
+        DFS(numbers,-numbers[0],1);
         return answer;
     }
 }
