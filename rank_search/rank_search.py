@@ -5,6 +5,14 @@ def solution(info, query):
     table_career={}
     table_food={}
     table_score={}
+    for c in range(len(info)):
+        temp_info=info[c].split(" ")
+        for t in temp_info:
+            if t=="java" or t=="cpp" or t=="python":
+                if t not in table_language:
+                    table_language[t]=[c]
+                else:
+                    table_language[t].append(c)
     for k in query:
         temp=k.split(" ")
         candidates=[]
