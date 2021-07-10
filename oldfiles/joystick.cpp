@@ -70,5 +70,5 @@ int solution(string name) {
 }
 int main()
 {
-    cout<<solution("JAZ");
+    cout<<solution("ABAAAAAAAAABB");
 }
