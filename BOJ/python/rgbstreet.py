@@ -9,15 +9,9 @@ def arrayinput():
     return costs
 def solution():
     inputs=arrayinput()
-    answer=0
-    back_color=-1
-    for curr in range(inputs[0]):
-        min=1001
-        for color in range(3):
-            if inputs[curr+1][color]<min and color!=back_color:
-                back_color=color
-                min=inputs[curr+1][color]
-        answer+=min
-    print("answer",answer)
-    return answer
+    for house in range(1,inputs[0]):
+        inputs[house+1][0]+=min(inputs[house][1],inputs[house][2])
+        inputs[house+1][1]+=min(inputs[house][0],inputs[house][2])
+        inputs[house+1][2]+=min(inputs[house][0],inputs[house][1])
+    print(min(inputs[inputs[0]]))
 solution()
