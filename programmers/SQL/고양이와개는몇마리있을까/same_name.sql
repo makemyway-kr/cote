@@ -1,0 +1,2 @@
+SELECT NAME,COUNT(NAME) as cntname from ANIMAL_INS GROUP BY NAME HAVING cntname>1 ORDER BY NAME;
+/*HAVING 절->GROUP BY 에서 조건을 달아줌.*/
