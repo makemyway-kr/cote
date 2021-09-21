@@ -10,7 +10,7 @@ def solution(routes):
                 check=True
                 break
         if check==False:
-            cameras.append(r[1])
+            cameras.append(r[1])#카메라가 존재하지않으면 현재 루트의 진출지점에 카메라를 설치함.
     answer=len(cameras)
     return answer
 print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]]))
