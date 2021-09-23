@@ -10,6 +10,6 @@ def solution(m,n,puddles):
                     ways[row][col]=ways[row-1][col]
                 else:
                     ways[row][col]=ways[row-1][col]+ways[row][col-1]
-    answer=ways[n-1][m-1]
+    answer=ways[n-1][m-1]%1000000007
     return answer
 print(solution(4,3,[[2,2]]))
