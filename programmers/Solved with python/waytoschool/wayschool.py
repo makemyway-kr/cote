@@ -1,3 +1,4 @@
+#등굣길
 def solution(m, n, puddles):
     answer = 0
     routes=[[[0,0] for col in range(m+1)]for row in range(n+1)]#number of shortest routes at first and cost at second.
