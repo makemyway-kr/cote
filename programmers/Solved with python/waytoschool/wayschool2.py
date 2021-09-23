@@ -3,7 +3,7 @@ def solution(m,n,puddles):
     ways[0][0]=1
     for row in range(0,n):
         for col in range(0,m):
-            if [row+1,col+1] not in puddles and [row,col]!=[0,0]:
+            if [col+1,row+1] not in puddles and [row,col]!=[0,0]:
                 if row==0:
                     ways[row][col]=ways[row][col-1]
                 elif col==0:
