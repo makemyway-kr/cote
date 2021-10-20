@@ -15,7 +15,11 @@ def solution(genres, plays):
     sort_with_genre.sort(key=lambda x: x[1],reverse=True)
     for s in sort_with_genre:
         s[0].sort(key=lambda x: plays[x],reverse=True)
-        answer.append(s[0][0])
-        answer.append(s[0][1])
+        if len(s[0])>1:
+            answer.append(s[0][0])
+            answer.append(s[0][1])
+        else:
+            answer.append(s[0][0])
+    print(answer)
     return answer
-solution(["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500])
+solution(["A", "A", "B", "A", "B", "B", "A", "A", "A", "A"],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
