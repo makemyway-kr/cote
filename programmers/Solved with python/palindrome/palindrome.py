@@ -12,7 +12,7 @@ def solution(s):
                 if s[h]!=s[t]:
                     p=False
                     break
-                h-=1
+                h+=1
                 t-=1
             if p==True:
                 answer=l
