@@ -6,19 +6,17 @@ def solution(enroll, referral, seller, amount):
         indexnum[enroll[i]]=i
     answer = [0 for i in range(len(enroll))]
     for s in range(len(seller)):
-        money=amount[s]*100
-        answer[indexnum[seller[s]]]+=(money-floor(money*0.1))
-        money=floor(money*0.1)
+        money=amount[s]*100#총 이익금
+        answer[indexnum[seller[s]]]+=(money-floor(money*0.1))#10%수수료 제한 금액을 판매한 사람이 가져감
+        money=floor(money*0.1)#10%이익금
         curr=referral[indexnum[seller[s]]]#소개해준사람 이름
-        while True:
+        while curr!='-':#-가 안나올 때까지 이익금 10%를 떼감.
             curri=indexnum[curr]
-            if floor(money*0.1)>=1 and curr!='-' and referral[curri]!='-':
+            if (money*0.1)>=1:
                 answer[curri]+=(money-floor(money*0.1))
                 money=floor(money*0.1)
-                curr=referral[curri]
-            elif referral[curri]=='-':
-                
-            elif curr=='-':
+                curr=referral[curri]#소개해준 사람으로 curr을 바꿈.
             else:
+                answer[curri]+=money#0.1곱한 것이 1보다 작으면 자기가 다 가짐(이것때문에 틀리다고 나왔었음.)
                 break
     return answer
