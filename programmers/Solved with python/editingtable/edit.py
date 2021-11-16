@@ -13,14 +13,14 @@ def solution(n, k, cmd):
             else:
                 curr+=int(c[1])
         elif c[0]=='C':
-            deleted.append(undeleted[curr])
+            deleted.append([undeleted[curr],curr])#내용,위치
             undeleted.pop(curr)
             if curr==len(undeleted):
                 curr=len(undeleted)-1
         elif c[0]=='Z':
             temp=deleted.pop()
-            undeleted.insert(temp,temp)
-            if temp<=curr:#현재 위치 보다 앞에 복구가되면 인덱스가 하나 밀려야 맞음.
+            undeleted.insert(temp[1],temp[0])
+            if temp[0]<=curr:#현재 위치 보다 앞에 복구가되면 인덱스가 하나 밀려야 맞음.
                 curr+=1
     for i in range(0,n):
         if i not in undeleted:
