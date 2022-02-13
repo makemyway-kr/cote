@@ -12,6 +12,6 @@ def solution(key,lock):
     zero_zero_key=[0,0]
     key_end=[len(key)-1,len(key),-1]
     temp_matcher=lock_zero
-    while temp_matcher!=0:
+    for rotation in range(4):
         
     return answer
