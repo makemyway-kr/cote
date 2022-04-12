@@ -3,12 +3,12 @@ import math
 def splitter(tosplit):
     result = {}
     for i in range(0,len(tosplit)-1):
-        temp = tosplit[i:i+2]
-        if temp.isalpha() and temp.find(" ")== -1:
+        temp = tosplit[i : i+2]
+        if temp.isalpha() and temp.find(" ") == -1:
             if temp in result.keys():
                 result[temp]+=1
             else:
-                result [temp] = 1
+                result[temp] = 1
     return result
 def solution(str1, str2):
     answer = 0
