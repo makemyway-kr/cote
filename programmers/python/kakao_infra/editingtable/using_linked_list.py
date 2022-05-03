@@ -34,13 +34,22 @@ def solution(n, k, cmd):
                 temp[last][1] = to_recover
                 last = to_recover
             else:
-                for i in range(to_recover-1,start-1,-1):
-                    if answer[i] == "O":
-                        temp[to_recover][0] = i
-                        temp[to_recover][1] = temp[i][1]
-                        temp[temp[i][1]][0] = to_recover
-                        temp[i][1] = to_recover
-                        break
+                if to_recover < int(n/2): #중간을 기준으로 앞에 있으면 앞쪽에서 지워지지 않은 행이 발견될 확률이 높음.
+                    for i in range(to_recover-1,start-1,-1):
+                        if answer[i] == "O":
+                            temp[to_recover][0] = i
+                            temp[to_recover][1] = temp[i][1]
+                            temp[temp[i][1]][0] = to_recover
+                            temp[i][1] = to_recover
+                            break
+                else:
+                    for i in range(to_recover+1,last+1):
+                        if answer[i] == "O":
+                            temp[to_recover][1] = i
+                            temp[to_recover][0] = temp[i][0]
+                            temp[temp[i][0]][1] = to_recover
+                            temp[i][0] = to_recover
+                            break
             answer[to_recover] = "O"
         else:
             to_move = int(c.split(' ')[1])
