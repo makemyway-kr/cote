@@ -9,9 +9,9 @@ def solution(key,lock):
             if lock[row,col]==0:
                 key_matcher[row+padding,col+padding]=0
                 lock_zero+=1
-    zero_zero_key=[0,0]
-    key_end=[len(key)-1,len(key),-1]
     temp_matcher=lock_zero
+    if lock_zero
     for rotation in range(4):
-        
+        for i in range(-padding,padding+1):
+
     return answer
