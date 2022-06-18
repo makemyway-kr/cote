@@ -27,7 +27,7 @@ def solution(info, query):
         scores[i] = int(temp[4])
     for q in query:
         temp = q.split(' ')
-        candidate = set([i for i in range(len(info))])
+        candidate = set([i for i in range(len(info)) if scores[i] >= temp[7]])
         for t in range(len(temp)):
             if temp[t] != '-' and temp[t]!= 'and':
                 if t == 0:
