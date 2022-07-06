@@ -1,30 +1,27 @@
+import sys
+
+
 def solution():
-    temp = input().split(' ')
+    temp = sys.stdin.readline().rstrip().split(' ')
     N = int(temp[0])
     M = int(temp[1])
-    numbers= []
+    numbers = []
     answers = []
     ranges = []
-    for i in range(1,N+1):
-        numbers.append([int(input()),i])
+    for i in range(1, N+1):
+        numbers.append(int(sys.stdin.readline().rstrip()))
     for i in range(M):
-        rinput = input().split(' ')
-        ranges.append(rinput)
-    numbers.sort(key = lambda x : x[0])
+        ranges.append(sys.stdin.readline().rstrip().split(' '))
     for r in ranges:
         a = int(r[0])
         b = int(r[1])
         tanswer = []
-        print(a,b)
-        for n in range(len(numbers)):
-            if numbers[n][1] >= a and numbers[n][1] <= b:
-                tanswer.append(numbers[n][0])
-                break
-        for n in range(len(numbers)-1,-1,-1):
-            if numbers[n][1] >= a and numbers[n][1] <= b:
-                tanswer.append(numbers[n][0])
-                break
+        temp = numbers[a-1:b]
+        tanswer.append(min(temp))
+        tanswer.append(max(temp))
         answers.append(tanswer)
     for a in answers:
         print(str(a[0])+' '+str(a[1]))
+
+
 solution()
