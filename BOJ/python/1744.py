@@ -1,32 +1,35 @@
 import sys
-numbers = []
+positive = []
+zeros = []
+negative = []
+ones = []
 N = int(sys.stdin.readline().rstrip())
 
 for i in range(N):
-    numbers.append(int(sys.stdin.readline().rstrip()))
-numbers.sort(key=lambda x: -x)
+    temp = int(sys.stdin.readline().rstrip())
+    if temp > 1:
+        positive.append(temp)
+    elif temp == 1:
+        ones.append(temp)
+    elif temp == 0:
+        zeros.append(temp)
+    else:
+        negative.append(temp)
+positive.sort(key=lambda x: -x)
+negative.sort()
 
 answer = 0
-last = -1
-n = 0
-while n < len(numbers)-1:
-    if numbers[n] == 1 and numbers[n+1] == 1:
-        answer += numbers[n]
-        last = n
-        n += 1
-    elif numbers[n] > 0 and numbers[n+1] == 0:
-        answer += numbers[n]
-        last = n
-        n += 1
-    elif numbers[n] * numbers[n+1] < 0:
-        answer += numbers[n]
-        last = n
-        n += 1
-    else:
-        answer += (numbers[n]*numbers[n+1])
-        last = n+1
-        n += 2
-if last <= len(numbers)-1:
-    for i in range(last+1, len(numbers)):
-        answer += numbers[i]
+while len(positive) > 1:
+    t1 = positive.pop(0)
+    t2 = positive.pop(0)
+    answer += t1*t2
+if len(positive) > 0:
+    answer += positive.pop()
+while(len(negative)) > 1:
+    answer += (negative.pop(0)*negative.pop(0))
+if len(zeros) > 0 and len(negative) > 0:
+    negative.pop(0)
+elif len(zeros) == 0 and len(negative) > 0:
+    answer += negative.pop(0)
+answer += len(ones)
 print(answer)
